@@ -1,60 +1,45 @@
 import React from 'react';
-function ContentRowMovies(){
+import propTypes from 'prop-types';
+
+function ContentRowMovies(props){
     return(
-        <React.Fragment>
-            {/*<!-- Movies in Data Base -->*/}
-            <div className="col-md-4 mb-4">
-                <div className="card border-left-primary shadow h-100 py-2">
-                    <div className="card-body">
+        <React.Fragment>                        
+                <div className="col-md-4 mb-4">
+                        <div className={"card " +  props.dado.borderColor + " shadow h-100 py-2"}>
+                        <div className="card-body">
                         <div className="row no-gutters align-items-center">
                             <div className="col mr-2">
-                                <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">Movies in Data Base</div>
-                                <div className="h5 mb-0 font-weight-bold text-gray-800">21</div>
+                                <div className={"text-xs font-weight-bold text-" + props.dado.textColor + " text-uppercase mb-1"}>{props.dado.title}</div>
+                                <div className="h5 mb-0 font-weight-bold text-gray-800">{props.dado.qtd}</div>
                             </div>
                             <div className="col-auto">
-                                <i className="fas fa-film fa-2x text-gray-300"></i>
+                                <i className={"fas " + props.dado.icon + " fa-2x text-gray-300"}></i>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            {/*<!-- Total awards -->*/}
-            <div className="col-md-4 mb-4">
-                <div className="card border-left-success shadow h-100 py-2">
-                    <div className="card-body">
-                        <div className="row no-gutters align-items-center">
-                            <div className="col mr-2">
-                                <div className="text-xs font-weight-bold text-success text-uppercase mb-1"> Total awards</div>
-                                <div className="h5 mb-0 font-weight-bold text-gray-800">79</div>
-                            </div>
-                            <div className="col-auto">
-                                <i className="fas fa-award fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/*<!-- Actors quantity -->*/}
-            <div className="col-md-4 mb-4">
-                <div className="card border-left-warning shadow h-100 py-2">
-                    <div className="card-body">
-                        <div className="row no-gutters align-items-center">
-                            <div className="col mr-2">
-                                <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">Actors quantity
-                                </div>
-                                <div className="h5 mb-0 font-weight-bold text-gray-800">49</div>
-                            </div>
-                            <div className="col-auto">
-                                <i className="fas fa-user fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div>                           
         </React.Fragment>
     )
+}
+
+
+
+ContentRowMovies.propTypes = { 
+    title: propTypes.string.isRequired,
+    icon: propTypes.string.isRequired,
+    qtd: propTypes.number.isRequired,
+    //borderColor: propTypes.oneOf(['border-left-primary', 'border-left-success','border-left-warning']).isRequired,
+    borderColor: propTypes.string.isRequired,
+    textColor: propTypes.string.isRequired     
+}
+
+ContentRowMovies.defaultProps = { 
+    title: 'Star',
+    icon: 'fa-film',
+    qtd: 9,
+    borderColor: 'border-left-success',
+    textColor: 'success'
 }
 
 export default ContentRowMovies;
