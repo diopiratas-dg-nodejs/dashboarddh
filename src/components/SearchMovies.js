@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
-
+import { useParams } from 'react-router';
 import noPoster from '../assets/images/no-poster.jpg';
 
 function SearchMovies(){
+	let { word } = useParams();
+
 	const [movies, setMovies] = useState([]);	// Controle em cima de "variaveis" do filme
-	const [keyword, setKeyword] = useState('');
+	const [keyword, setKeyword] = useState(word);
 
 	const inputKeyword = useRef();
 
